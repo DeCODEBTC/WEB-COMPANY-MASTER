@@ -1,0 +1,75 @@
+$primary-color: #3f37c9;
+
+@import 'node_modules/spectre.css/src/spectre';
+@import 'node_modules/spectre.css/src/spectre-exp';
+@import 'node_modules/spectre.css/src/spectre-icons';
+
+ 
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root{
+  /* ===== Colors ===== */
+  --global-color-example: red;
+  --body-color: #E4E9F7;
+  --sidebar-color: #FFF;
+  --primary-color: #695CFE;
+  --primary-color-light: #F6F5FF;
+  --toggle-color: #DDD;
+  --text-color: #707070;
+
+  /* ====== Transition ====== */
+  --tran-03: all 0.2s ease;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.3s ease;
+  --tran-05: all 0.3s ease;
+}
+
+body{
+  min-height: 100vh;
+  background-color: var(--body-color);
+  transition: var(--tran-05);
+}
+
+::selection{
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+body.dark{
+  --body-color: #18191a;
+  --sidebar-color: #242526;
+  --primary-color: #3a3b3c;
+  --primary-color-light: #3a3b3c;
+  --toggle-color: #fff;
+  --text-color: #ccc;
+}
+
+.container {
+  margin-top: 3rem;
+  align-items: center;
+  border-radius: 20px;
+
+  animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+#btn {
+  border-radius: 5px;
+}
+
+#btn:hover {
+  border-radius: 5px;
+  background: #695CFE;
+}
+
+

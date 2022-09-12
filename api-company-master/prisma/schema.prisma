@@ -1,0 +1,83 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                    Int       @default(autoincrement()) @id
+  email                 String    @unique
+  emailVerified         Boolean   @default(false)
+  name                  String
+  password              String
+  profile               String?
+  permissionsToCompany  Int?     
+  companyId             Int?     
+  company               Company?  @relation(fields: [companyId], references: [id])
+}
+
+model Company {
+  id              Int      @default(autoincrement()) @id
+  name            String
+  document        String
+  phone           String
+  minimum_value   String
+  delivery        Boolean? @default(true)
+  latitude        String  
+  longitude       String
+  background      String
+  enabled         Boolean? @default(true)
+  team            User[]
+  menu            Menu[]
+  linkDelivery    String?
+  cookingStyle    String?
+  description     String?
+  fullAddress     String?
+  typePlan        String?
+  quantRequest    Int?
+}
+
+
+model Menu {
+  id              Int         @default(autoincrement()) @id
+  name            String
+  code            Int
+  tableVisible    Boolean?    @default(false)
+  deliveyVisible  Boolean?    @default(false)
+  products        Product[] 
+  companyId       Int
+  company         Company     @relation(fields: [companyId], references: [id]) 
+}
+
+model Product {
+  id              Int       @default(autoincrement()) @id
+  name            String
+  description     String
+  code            Int
+  moreEight       Boolean?  @default(false)
+  tableVisible    Boolean?  @default(false)
+  deliveyVisible  Boolean?  @default(false)
+  price           Float
+  menu            Menu[]       
+  optional        Optional[]
+}
+
+model Optional {
+  id              Int       @default(autoincrement()) @id
+  name            String
+  code            Int  
+  price           Float
+  tableVisible    Boolean?  @default(false)
+  deliveyVisible  Boolean?  @default(false)
+  min             Int?      @default(0)
+  max             Int?      @default(1)
+  products        Product[] 
+}
+
+

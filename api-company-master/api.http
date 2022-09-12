@@ -1,0 +1,30 @@
+POST http://localhost:9000/user
+Content-Type: application/json
+
+{
+    "email": "dasdasd#gmail.com",
+    "name": "Qualquer coisa"
+}
+
+###
+GET  http://localhost:9000/user 
+
+
+###
+POST http://localhost:9000/company
+Content-Type: application/json
+
+{
+    "name": "Pizzaria Campo Grande",
+    "document": "897541635",
+    "phone": "(67) 9999999-69999",
+    "minimum_value": "35",
+    "delivery": false,
+    "latitude": "-13546.46546.41",
+    "longitude": "-13546.46546.41",
+    "background": "dlaçksndçalksdnçl.com",
+    "enabled": false
+}
+
+###
+GET  http://localhost:9000/company
